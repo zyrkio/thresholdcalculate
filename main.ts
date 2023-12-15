@@ -1,3 +1,4 @@
+//% color="#AA278D" icon="\uf2fe" block="Threshold Calculator"
 namespace ThresholdCalculator {
 
     /**
@@ -5,6 +6,7 @@ namespace ThresholdCalculator {
      * @param values An array of numbers to calculate the threshold from.
      * @returns The calculated threshold value.
      */
+    //% block="calculate threshold from $values=variables_get(myNumbers)"
     export function calculateThreshold(values: number[]): number {
         if (values.length === 0) {
             return 0; // If no values provided, return 0 as default threshold
