@@ -1,7 +1,7 @@
 namespace ThresholdCalculator {
 
     /**
-     * Calculate the threshold as the average of a series of numbers.
+     * Calculate the threshold 
      * @param values An array of numbers to calculate the threshold from.
      * @returns The calculated threshold value.
      */
