@@ -4,11 +4,11 @@ namespace ThresholdCalculator {
 
 
     /**
-     * Calculate the threshold 
-     * @returns The calculated threshold value.
+     * Berechne den Threshold
+     * @param signal, beschreibe den Parameter hier
      */
-    //% block="calculate threshold $signal"
-  
+    //% block="Berechne den Mittelwert $signal"
+    //% signal.min=0 signal.max=5
     export function calculateThreshold(num: number): number {
 
         values.push(num);
