@@ -7,7 +7,8 @@ namespace ThresholdCalculator {
      * Calculate the threshold 
      * @returns The calculated threshold value.
      */
-    //% block="calculate threshold"
+    //% block="calculate threshold $signal"
+  
     export function calculateThreshold(num: number): number {
 
         values.push(num);
