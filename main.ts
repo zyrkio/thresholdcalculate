@@ -1,7 +1,7 @@
 //% color="#AA278D" icon="\uf2fe" block="Threshold Calculator"
 namespace ThresholdCalculator {
     let values: number[] = [];
-
+    let thresholdMw = 0;
 
     /**
      * Berechne den Threshold
@@ -41,7 +41,8 @@ namespace ThresholdCalculator {
         const maxAverage = calculateAverage(maxValues);
         const minAverage = calculateAverage(minValues);
 
-        return (maxAverage + minAverage) / 2;
+        thresholdMw = (maxAverage + minAverage) / 2;
+        return thresholdMw;
     }
 
     function calculateAverage(numbers: number[]): number {
