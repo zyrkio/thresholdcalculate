@@ -9,9 +9,9 @@ namespace ThresholdCalculator {
      */
     //% block="Berechne den Mittelwert $signal"
     //% signal.min=0 signal.max=5
-    export function calculateThreshold(num: number): number {
+    export function calculateThreshold(signal : number): number {
 
-        values.push(num);
+        values.push(signal );
 
         if (values.length === 0) {
             return 0; // If no values provided, return 0 as default threshold
