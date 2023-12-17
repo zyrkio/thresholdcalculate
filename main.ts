@@ -11,18 +11,26 @@ namespace ThresholdCalculator {
     //% block="Konvertiere, filtere, gleiche aus und berechne RMS des EMG-Signal $signal"
     //% signal.min=0 signal.max=1023
     export function calculateThreshold(num: number): number {
-
-        if (num === 10) {
-            // Wenn der Wert 10 ist, ignorieren und direkt 0 zurückgeben
-            return 0;
-        }
-
         values.push(num);
-
+        
         if (values.length === 0) {
             return 0; // Wenn keine Werte vorhanden sind, gib 0 als Standard-Schwelle zurück
         }
+        if (num === 10) {
+            // Wenn der Wert 10 ist, ignorieren und direkt 0 zurückgeben
+            values = [];
 
+            // Fülle das Array mit Nullen entsprechend der gewünschten Länge
+            
+            for (let i = 0; i < values.length; i++) {
+                values.push(0);
+            }
+            return 0;
+        }
+
+       
+
+       
         let sum = 0;
         let maxValues: number[] = [];
         let minValues: number[] = [];
