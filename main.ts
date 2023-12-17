@@ -1,4 +1,3 @@
-
 //% color="#AA278D" icon="\uf2fe" block="Threshold Calculator"
 namespace ThresholdCalculator {
     let values: number[] = [];
@@ -12,22 +11,24 @@ namespace ThresholdCalculator {
     //% block="Konvertiere, filtere, gleiche aus und berechne RMS des EMG-Signal $signal"
     //% signal.min=0 signal.max=1023
     export function calculateThreshold(num: number): number {
+
         if (num === 10) {
-            // Wenn der Wert 10 ist, setze das Array auf 0 zurück
-            values = [];
-            return 0; // Gib 0 zurück
-        }else{
-            values.push(num);
+            // Wenn der Wert 10 ist, ignorieren und direkt 0 zurückgeben
+            return 0;
+        }
 
-            if (values.length === 0) {
-                return 0; // If no values provided, return 0 as default threshold
-            }
+        values.push(num);
 
-            let sum = 0;
-            let maxValues: number[] = [];
-            let minValues: number[] = [];
+        if (values.length === 0) {
+            return 0; // Wenn keine Werte vorhanden sind, gib 0 als Standard-Schwelle zurück
+        }
 
-            for (let i = 0; i < values.length; i++) {
+        let sum = 0;
+        let maxValues: number[] = [];
+        let minValues: number[] = [];
+
+        for (let i = 0; i < values.length; i++) {
+            if (values[i] !== 10) {
                 sum += values[i];
 
                 if (maxValues.length === 0 || values[i] > maxValues[0]) {
@@ -42,13 +43,14 @@ namespace ThresholdCalculator {
                     minValues.push(values[i]);
                 }
             }
+        }
 
-            const average = sum / values.length;
-            const maxAverage = calculateAverage(maxValues);
-            const minAverage = calculateAverage(minValues);
+        const filteredLength = values.filter(val => val !== 10).length;
+        const average = filteredLength > 0 ? sum / filteredLength : 0;
+        const maxAverage = calculateAverage(maxValues);
+        const minAverage = calculateAverage(minValues);
 
-            return (maxAverage + minAverage) / 2;
-        }     
+        return (maxAverage + minAverage) / 2;
     }
 
     function calculateAverage(numbers: number[]): number {
